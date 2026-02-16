@@ -1,0 +1,26 @@
+/* App.css - Global App Container */
+
+.app-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
+.main-content {
+    width: 100%;
+}
+
+/* Smooth page transitions */
+.main-content > * {
+    animation: fadeInPage 0.5s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

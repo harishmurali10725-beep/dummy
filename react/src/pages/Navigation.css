@@ -1,0 +1,225 @@
+/* Navigation.css */
+
+/* ============================================
+   NAVIGATION CONTAINER
+============================================ */
+.neon-nav {
+    /* Glassmorphism background */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 20px 40px;
+    
+    /* Flexbox layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    /* Shadow and elevation */
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(0, 255, 255, 0.1);
+    
+    /* Fade-in animation on load */
+    animation: fadeInNav 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Responsive width */
+    max-width: 90%;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+/* Navbar fade-in animation */
+@keyframes fadeInNav {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   NAVIGATION LINKS
+============================================ */
+.neon-nav .neon-link {
+    /* Base styles */
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    position: relative;
+    display: inline-block;
+    
+    /* Smooth transitions */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Ensure text stays above pseudo-elements */
+    z-index: 1;
+}
+
+/* Animated underline (hidden by default) */
+.neon-nav .neon-link::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #00f5ff, #00d9ff, #00f5ff);
+    box-shadow: 
+        0 0 10px #00f5ff,
+        0 0 20px #00f5ff,
+        0 0 30px #00f5ff;
+    transform: translateX(-50%);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+/* Add separator using pseudo-element */
+.neon-nav .neon-link:not(:last-child)::after {
+    content: '>';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 18px;
+    font-weight: 300;
+    pointer-events: none;
+    animation: separatorFade 1s ease-in-out;
+}
+
+@keyframes separatorFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   HOVER EFFECTS
+============================================ */
+.neon-nav .neon-link:hover {
+    /* Pop-up effect */
+    transform: translateY(-4px) scale(1.05);
+    color: #00f5ff;
+    
+    /* Glow effect */
+    text-shadow: 
+        0 0 10px rgba(0, 245, 255, 0.8),
+        0 0 20px rgba(0, 245, 255, 0.6),
+        0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+/* Underline appears on hover */
+.neon-nav .neon-link:hover::before {
+    width: 80%;
+}
+
+/* ============================================
+   ACTIVE STATE (CURRENT PAGE)
+============================================ */
+.neon-nav .neon-link.active {
+    color: #00f5ff;
+    text-shadow: 
+        0 0 10px rgba(0, 245, 255, 0.8),
+        0 0 20px rgba(0, 245, 255, 0.6);
+}
+
+/* Active underline - always visible with pulsing glow */
+.neon-nav .neon-link.active::before {
+    width: 80%;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Pulsing glow animation for active state */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px #00f5ff,
+            0 0 20px #00f5ff,
+            0 0 30px #00f5ff;
+    }
+    50% {
+        box-shadow: 
+            0 0 15px #00f5ff,
+            0 0 30px #00f5ff,
+            0 0 45px #00f5ff,
+            0 0 60px #00f5ff;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - TABLET
+============================================ */
+@media screen and (max-width: 768px) {
+    .neon-nav {
+        padding: 15px 25px;
+        border-radius: 30px;
+        gap: 8px;
+    }
+
+    .neon-nav .neon-link {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+
+    .neon-nav .neon-link:not(:last-child)::after {
+        font-size: 16px;
+        right: -12px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+============================================ */
+@media screen and (max-width: 480px) {
+    .neon-nav {
+        padding: 12px 15px;
+        border-radius: 25px;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .neon-nav .neon-link {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .neon-nav .neon-link:not(:last-child)::after {
+        font-size: 14px;
+        right: -10px;
+    }
+
+    .neon-nav .neon-link::before {
+        bottom: 6px;
+    }
+
+    .neon-nav .neon-link:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS STATES
+============================================ */
+.neon-nav .neon-link:focus {
+    outline: 2px solid #00f5ff;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.neon-nav .neon-link:focus:not(:focus-visible) {
+    outline: none;
+}

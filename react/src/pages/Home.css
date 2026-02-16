@@ -1,0 +1,524 @@
+/* ============================================
+   HOME PAGE CONTAINER
+============================================ */
+.home-container {
+    position: relative;
+    min-height: calc(100vh - 120px);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   ANIMATED GRID BACKGROUND
+============================================ */
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+    z-index: 1;
+}
+
+@keyframes gridMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* ============================================
+   GLOWING ORBS
+============================================ */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: orbFloat 15s infinite ease-in-out;
+    z-index: 2;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.4), transparent);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.3), transparent);
+    bottom: 10%;
+    right: 10%;
+    animation-delay: 5s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.3), transparent);
+    top: 50%;
+    left: 50%;
+    animation-delay: 10s;
+}
+
+@keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -50px) scale(1.1); }
+    66% { transform: translate(-50px, 50px) scale(0.9); }
+}
+
+/* ============================================
+   GRADIENT OVERLAY (Mouse Interactive)
+============================================ */
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transition: background 0.3s ease;
+    z-index: 3;
+}
+
+/* ============================================
+   PARTICLES
+============================================ */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(0, 245, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+    animation: particleFloat 10s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 12s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 10s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 3s; animation-duration: 14s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 4s; animation-duration: 9s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 11s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 6s; animation-duration: 13s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 7s; animation-duration: 15s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 8s; animation-duration: 10s; }
+.particle:nth-child(10) { left: 15%; animation-delay: 1.5s; animation-duration: 12s; }
+.particle:nth-child(11) { left: 25%; animation-delay: 2.5s; animation-duration: 9s; }
+.particle:nth-child(12) { left: 35%; animation-delay: 3.5s; animation-duration: 11s; }
+.particle:nth-child(13) { left: 45%; animation-delay: 4.5s; animation-duration: 13s; }
+.particle:nth-child(14) { left: 55%; animation-delay: 5.5s; animation-duration: 14s; }
+.particle:nth-child(15) { left: 65%; animation-delay: 6.5s; animation-duration: 10s; }
+.particle:nth-child(16) { left: 75%; animation-delay: 7.5s; animation-duration: 12s; }
+.particle:nth-child(17) { left: 85%; animation-delay: 8.5s; animation-duration: 15s; }
+.particle:nth-child(18) { left: 95%; animation-delay: 9.5s; animation-duration: 11s; }
+.particle:nth-child(19) { left: 5%; animation-delay: 10s; animation-duration: 13s; }
+.particle:nth-child(20) { left: 95%; animation-delay: 11s; animation-duration: 14s; }
+
+@keyframes particleFloat {
+    0% {
+        bottom: -10px;
+        opacity: 0;
+        transform: translateX(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+/* ============================================
+   SHOOTING STARS
+============================================ */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0, 245, 255, 0), rgba(0, 245, 255, 0.8));
+    border-radius: 50%;
+    animation: shootingStar 3s infinite;
+    z-index: 2;
+}
+
+.shooting-star:nth-child(1) {
+    top: 10%;
+    right: 20%;
+    animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+    top: 30%;
+    right: 60%;
+    animation-delay: 2s;
+}
+
+.shooting-star:nth-child(3) {
+    top: 50%;
+    right: 80%;
+    animation-delay: 4s;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-500px) translateY(500px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   FLOATING BUBBLES
+============================================ */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 245, 255, 0.3), rgba(0, 217, 255, 0.1));
+    box-shadow: 
+        0 0 20px rgba(0, 245, 255, 0.3),
+        0 0 40px rgba(0, 245, 255, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: float 15s infinite ease-in-out;
+    opacity: 0;
+    z-index: 2;
+}
+
+.bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; animation-duration: 12s; }
+.bubble:nth-child(2) { width: 120px; height: 120px; left: 20%; animation-delay: 2s; animation-duration: 16s; }
+.bubble:nth-child(3) { width: 60px; height: 60px; left: 40%; animation-delay: 4s; animation-duration: 14s; }
+.bubble:nth-child(4) { width: 100px; height: 100px; left: 60%; animation-delay: 1s; animation-duration: 18s; }
+.bubble:nth-child(5) { width: 90px; height: 90px; left: 75%; animation-delay: 3s; animation-duration: 13s; }
+.bubble:nth-child(6) { width: 70px; height: 70px; left: 85%; animation-delay: 5s; animation-duration: 15s; }
+.bubble:nth-child(7) { width: 110px; height: 110px; left: 30%; animation-delay: 6s; animation-duration: 17s; }
+.bubble:nth-child(8) { width: 85px; height: 85px; left: 50%; animation-delay: 7s; animation-duration: 14s; }
+
+@keyframes float {
+    0% {
+        bottom: -150px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% { opacity: 0.6; }
+    50% {
+        opacity: 0.8;
+        transform: translateX(100px) rotate(180deg);
+    }
+    90% { opacity: 0.3; }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+        transform: translateX(-100px) rotate(360deg);
+    }
+}
+
+/* ============================================
+   HOME WRAPPER
+============================================ */
+.home-wrapper {
+    position: relative;
+    z-index: 10;
+    animation: homeFade 1s ease-in-out;
+}
+
+@keyframes homeFade {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   HOME CARD
+============================================ */
+.home-card {
+    position: relative;
+    padding: 60px 80px;
+    border-radius: 30px;
+    text-align: center;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(0, 245, 255, 0.2);
+    box-shadow:
+        0 0 40px rgba(0, 245, 255, 0.2),
+        0 0 80px rgba(0, 245, 255, 0.1),
+        inset 0 0 60px rgba(0, 245, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.1), transparent 70%);
+    animation: cardGlowRotate 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes cardGlowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.home-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(0, 245, 255, 0.5);
+    box-shadow:
+        0 0 60px rgba(0, 245, 255, 0.4),
+        0 0 120px rgba(0, 245, 255, 0.2),
+        inset 0 0 80px rgba(0, 245, 255, 0.1);
+}
+
+/* ============================================
+   WELCOME TEXT
+============================================ */
+.welcome-text {
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-line {
+    display: block;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    animation: textSlideIn 0.8s ease-out backwards;
+}
+
+.text-line:first-child {
+    animation-delay: 0.2s;
+}
+
+.text-line.highlight {
+    font-size: 52px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00f5ff, #ff00ff, #00f5ff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textSlideIn 0.8s ease-out backwards, gradientShift 3s ease infinite;
+    animation-delay: 0.4s, 0s;
+    text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+}
+
+@keyframes textSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   SUBTITLE
+============================================ */
+.subtitle {
+    font-size: 18px;
+    color: rgba(0, 245, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin: 10px 0 30px 0;
+    animation: textSlideIn 0.8s ease-out backwards;
+    animation-delay: 0.6s;
+}
+
+/* ============================================
+   DECORATIVE LINE
+============================================ */
+.decorative-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    animation: textSlideIn 0.8s ease-out backwards;
+    animation-delay: 0.8s;
+}
+
+.decorative-line::before,
+.decorative-line::after {
+    content: '';
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.6), transparent);
+}
+
+.line-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 245, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.8);
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+.line-dot:nth-child(2) { animation-delay: 0.3s; }
+.line-dot:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes dotPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.5); 
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   INFO CARDS
+============================================ */
+.info-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+    animation: textSlideIn 0.8s ease-out backwards;
+    animation-delay: 1s;
+}
+
+.info-card {
+    padding: 20px 30px;
+    background: rgba(0, 245, 255, 0.05);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 245, 255, 0.1);
+    border-color: rgba(0, 245, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+}
+
+.info-number {
+    font-size: 36px;
+    font-weight: 900;
+    color: #00f5ff;
+    margin-bottom: 5px;
+}
+
+.info-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+@media screen and (max-width: 768px) {
+    .home-card {
+        padding: 40px 30px;
+    }
+
+    .text-line {
+        font-size: 24px;
+    }
+
+    .text-line.highlight {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .info-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .info-card {
+        padding: 15px 25px;
+    }
+
+    .bubble {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .orb {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .home-card {
+        padding: 30px 20px;
+    }
+
+    .text-line {
+        font-size: 20px;
+    }
+
+    .text-line.highlight {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .info-number {
+        font-size: 28px;
+    }
+
+    .info-label {
+        font-size: 12px;
+    }
+}

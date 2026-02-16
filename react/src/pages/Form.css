@@ -1,0 +1,134 @@
+/* ---------- Page Container ---------- */
+.form-page-container {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #000;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ---------- Form Structure ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+/* ---------- Inputs ---------- */
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+  padding: 10px;
+  font-size: 15px;
+  background: #fff;
+  border: 1.5px solid #000;
+  border-radius: 5px;
+  color: #000;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background:whitesmoke;
+  color: #120101;
+}
+
+/* ---------- Radio Buttons ---------- */
+form div:nth-child(3) {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+  transform: scale(1.2);
+}
+
+/* ---------- Button ---------- */
+button {
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  background: #9ad0ec;
+  align-items: center;
+}
+
+/* ---------- Error Styling ---------- */
+span {
+  font-size: 13px;
+  color: red;
+  margin-top: 4px;
+}
+
+/* ---------- Table Styling ---------- */
+table {
+  margin-top: 25px;
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 2px solid #000;
+  font-size: 15px;
+}
+
+th,
+td {
+  padding: 12px;
+  color:#000;
+  border: 1px solid #000;
+}
+
+th {
+  background: #d77d7d;
+  color: #150303c3;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background: #070202;
+}
+
+tr:hover {
+  background: #ddd;
+  color:#89bbe3
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .form-page-container {
+    padding: 15px;
+  }
+
+  table th,
+  table td {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

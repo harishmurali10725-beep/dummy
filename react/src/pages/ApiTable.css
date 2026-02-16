@@ -1,0 +1,246 @@
+/* ---------- Base Reset (minimal) ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --gray-10: #f7f7f7;
+  --gray-20: #efefef;
+  --gray-30: #e5e5e5;
+  --gray-50: #cfcfcf;
+  --gray-70: #9a9a9a;
+}
+
+/* ---------- Screen Reader Only ---------- */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+
+/* ---------- Page Container ---------- */
+.form-page-container {
+  max-width: 760px; /* slightly wider for tables */
+  margin: 40px auto;
+  padding: 28px;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1.5px solid var(--black);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--black);
+}
+
+/* ---------- Form Structure ---------- */
+form {
+  display: grid;
+  gap: 18px;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--black);
+}
+
+/* ---------- Inputs ---------- */
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+  padding: 10px 12px;
+  font-size: 15px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 6px;
+  color: var(--black);
+  outline: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background: var(--black);
+  color: var(--white);
+  box-shadow: 0 0 0 2px var(--black) inset;
+}
+
+/* placeholder color on dark focus */
+input::placeholder,
+textarea::placeholder {
+  color: #666;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #ccc;
+}
+
+/* ---------- Radio Group ---------- */
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.radio-group > label:first-child {
+  margin-right: 6px;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+input[type="radio"] {
+  transform: scale(1.15);
+  accent-color: var(--black); /* supported in modern browsers */
+}
+
+/* ---------- Button ---------- */
+button {
+  padding: 12px;
+  background: var(--black);
+  color: var(--white);
+  border: 1.5px solid var(--black);
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  align-self: start; /* keeps it from stretching full width */
+}
+
+button:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ---------- Error Styling ---------- */
+span[role="alert"] {
+  font-size: 13px;
+  color: #cc0000;
+  margin-top: -2px;
+}
+
+/* ---------- Table Region ---------- */
+.table-section {
+  margin-top: 28px;
+}
+
+/* Scroll container to prevent clipping */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1.5px solid var(--black);
+  border-radius: 8px;
+  background: var(--white);
+}
+
+/* Table */
+.table-responsive table {
+  width: 100%;
+  min-width: 820px; /* ensures last column is visible; adjust as needed */
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 15px;
+}
+
+/* Sticky header (optional, remove if not needed) */
+.table-responsive thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Cells */
+th,
+td {
+  padding: 12px 14px;
+  border: 1px solid var(--black);
+  color: var(--black);
+  text-align: left;
+  vertical-align: top;
+  background: var(--white);
+}
+
+/* Header */
+th {
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Row striping */
+tbody tr:nth-child(even) td {
+  background: var(--gray-10);
+}
+
+/* Hover */
+tbody tr:hover td {
+  background: var(--gray-20);
+}
+
+/* ---------- Longitude Column Handling ---------- */
+/* Assuming Longitude is the 7th column in your table */
+th:nth-child(7),
+td:nth-child(7) {
+  white-space: nowrap;   /* keep coordinates on one line */
+  min-width: 160px;      /* give enough space */
+  max-width: 240px;      /* optional max to avoid oversized cells */
+  overflow: hidden;
+  text-overflow: ellipsis; /* if too long, show … (only when constrained) */
+}
+
+/* ---------- Optional: Fixed Layout for Predictability ---------- */
+/* Enable this block if you want hard column widths and ellipsis everywhere */
+/*
+.table-responsive table {
+  table-layout: fixed;
+}
+
+th, td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+th:nth-child(1), td:nth-child(1) { width: 70px; }   // S.No
+th:nth-child(2), td:nth-child(2) { width: 160px; }  // Name
+th:nth-child(3), td:nth-child(3) { width: 140px; }  // City
+th:nth-child(4), td:nth-child(4) { width: 110px; }  // Gender
+th:nth-child(5), td:nth-child(5) { width: 140px; }  // Phone
+th:nth-child(6), td:nth-child(6) { width: 220px; }  // Feedback
+th:nth-child(7), td:nth-child(7) { width: 180px; }  // Longitude
+*/
+
+/* ---------- Responsive ---------- */
+@media (max-width: 520px) {
+  .form-page-container {
+    padding: 18px;
+  }
+
+  /* Keep table scroll instead of squeezing */
+  .table-responsive table {
+    min-width: 720px;
+  }
+}
