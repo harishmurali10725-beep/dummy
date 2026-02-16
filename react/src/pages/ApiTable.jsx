@@ -12,7 +12,7 @@ function ApiTable() {
         const data = await res.json();
         setUsers(data);
       } catch (err) {
-        setError(err.message || "Unknown error");
+        setError(err.message || "Unknown error")
       }
     }
 
