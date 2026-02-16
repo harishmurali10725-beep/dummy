@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'; // Add these imports!
 import { BrowserRouter } from 'react-router-dom'; // Changed from BrowserRouter as Router
 import { Routes, Route } from 'react-router-dom';
-import Navigation from './pages/Navigation';
-import Home from './pages/Home';
-import ApiTable from './pages/ApiTable';
-import Counter1 from './pages/Counter1';
-import Form from './pages/Form';
-import Card from './pages/Card';
-import TableContext from './pages/Auth';
-import Table from './pages/Table';
+import Navigation from './pages/Navigation/Navigation';
+import Home from './pages/Home/Home';
+import ApiTable from './pages/ApiTable/ApiTable';
+import Counter1 from './pages/Counter1/Counter1';
+import Form from './pages/Form/Form';
+import Card from './pages/Card/Card';
+import TableContext from './pages/Auth/Auth';
+import Table from './pages/Table/Table';
 import './App.css';
 
 function App() {
