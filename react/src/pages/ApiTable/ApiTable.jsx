@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import './ApiTable.css';
+import React, { useEffect, useState } from "react"
+import './ApiTable.css'
 
 function ApiTable() {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,7 @@ function ApiTable() {
       try {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
-        setUsers(data);
+        setUsers(data)
       } catch (err) {
         setError(err.message || "Unknown error")
       }
@@ -63,4 +63,4 @@ function ApiTable() {
   );
 }
 
-export default ApiTable;
+export default ApiTable

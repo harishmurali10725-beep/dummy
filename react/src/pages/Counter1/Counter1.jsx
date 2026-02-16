@@ -1,37 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import './Counter1.css';
+import React, { useState, useEffect } from 'react'
+import './Counter1.css'
 
 const Counter1 = () => {
-  const [count, setCount] = useState(0);
-  const [isLimitReached, setIsLimitReached] = useState(false);
+  const [count, setCount] = useState(0)
+  const [isLimitReached, setIsLimitReached] = useState(false)
   
   useEffect(() => {
     if (isLimitReached) {
-      const timer = setTimeout(() => setIsLimitReached(false), 500);
-      return () => clearTimeout(timer);
+      const timer = setTimeout(() => setIsLimitReached(false), 500)
+      return () => clearTimeout(timer)
     }
-  }, [isLimitReached]);
+  }, [isLimitReached])
 
   const Incrementor = () => {
     if (count >= 5) {
-      alert("Number is already 5, it won't go beyond that");
-      setIsLimitReached(true);
-      return;
+      alert("Number is already 5, it won't go beyond that")
+      setIsLimitReached(true)
+      return
     }
-    setCount((prev) => prev + 1);
-  };
+    setCount((prev) => prev + 1)
+  }
 
   const Decrementor = () => {
     if (count > 0) {
-      setCount(count - 1);
+      setCount(count - 1)
     } else {
-      setIsLimitReached(true);
+      setIsLimitReached(true)
     }
-  };
+  }
   
   const Resetter = () => {
-    setCount(0);
-  };
+    setCount(0)
+  }
   
   return (
     <div className={`counter-container ${isLimitReached ? 'limit-reached' : ''}`}>
@@ -44,7 +44,7 @@ const Counter1 = () => {
         <button onClick={Resetter}>Reset</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Counter1;
+export default Counter1

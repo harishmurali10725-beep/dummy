@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Modal from "./Modal";
-import './Card.css';
+import React, { useState, useEffect } from 'react'
+import Modal from "./Modal"
+import './Card.css'
 const CardMember = ({ name, email, phone }) => {
   return (
     <div className="card">
@@ -14,8 +14,8 @@ const CardMember = ({ name, email, phone }) => {
 const Card = () => {
   const [users, setUsers] = useState([])
   const [error, setError] = useState(null)
-  const [open, setOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [open, setOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(null)
   const handleClose = () => {
     setOpen(false)
     setSelectedUser(null)
@@ -28,18 +28,18 @@ const Card = () => {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const res = await fetch('https://jsonplaceholder.typicode.com/users');
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        setUsers(data);
+        const res = await fetch('https://jsonplaceholder.typicode.com/users')
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const data = await res.json()
+        setUsers(data)
       } catch (err) {
         setError(err.message || 'Unknown error');
           }    }
     fetchUsers()
   }, [])
  
-  if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
-  if (!users.length) return <div>No users found.</div>;
+  if (error) return <div style={{ color: 'red' }}>Error: {error}</div>
+  if (!users.length) return <div>No users found.</div>
   const formatAddress = (addr) => {
     if (!addr) return 'N/A'
     const parts = [addr?.suite,addr?.street,addr?.city,addr?.zipcode].filter(Boolean)
@@ -69,6 +69,6 @@ const Card = () => {
         </Modal>
     </>
     
-  );
-};
-export default Card;
+  )
+}
+export default Card
