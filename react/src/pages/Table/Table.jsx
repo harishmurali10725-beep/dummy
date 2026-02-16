@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import TableContext from "./Auth";
-import "./Table.css";
+import TableContext from "../Auth/Auth";
+import "./Table.css"
 
 const Table = () => {
-  const context = useContext(TableContext);
-  const submittedData = context?.submittedData || [];
+  const context = useContext(TableContext)
+  const submittedData = context?.submittedData || []
 
   if (!Array.isArray(submittedData) || submittedData.length === 0) {
-    return <p className="no-data">No Data Submitted Yet</p>;
+    return <p className="no-data">No Data Submitted Yet</p>
   }
 
   return (
@@ -40,7 +40,7 @@ const Table = () => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

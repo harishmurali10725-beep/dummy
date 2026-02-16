@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Add this import
-import './Form.css';
-import TableContext from "./Auth";
+import React, { useState, useContext } from "react"
+import { useNavigate } from "react-router-dom" // Add this import
+import './Form.css'
+import TableContext from "../Auth/Auth"
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -10,48 +10,48 @@ const Form = () => {
     gender: "",
     phone: "",
     feedback: ""
-  });
+  })
   
-  const [errors, setErrors] = useState({});
-  const { submittedData, setSubmittedData } = useContext(TableContext);
-  const navigate = useNavigate(); // Add this
+  const [errors, setErrors] = useState({})
+  const { submittedData, setSubmittedData } = useContext(TableContext)
+  const navigate = useNavigate() // Add this
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({...prev, [name]: value}));
+    const { name, value } = e.target
+    setFormData(prev => ({...prev, [name]: value}))
   
     setErrors((prev) => {
-      if (!prev[name]) return prev;
-      const newErrors = { ...prev };
-      delete newErrors[name];
-      return newErrors;
-    });
+      if (!prev[name]) return prev
+      const newErrors = { ...prev }
+      delete newErrors[name]
+      return newErrors
+    })
   }
 
   const validateForm = () => {
-    const newErrors = {};
-    if (!formData.username?.trim()) newErrors.username = "Name is required";
-    if (!formData.city) newErrors.city = "Please Select the City";
-    if (!formData.gender) newErrors.gender = "Please Select the gender";
+    const newErrors = {}
+    if (!formData.username?.trim()) newErrors.username = "Name is required"
+    if (!formData.city) newErrors.city = "Please Select the City"
+    if (!formData.gender) newErrors.gender = "Please Select the gender"
     if (!formData.phone) {
-      newErrors.phone = "Please Enter the PhoneNo";
+      newErrors.phone = "Please Enter the PhoneNo"
     } else if (!/^[6-9]\d{9}$/.test(formData.phone)) {
-      newErrors.phone = "Enter appropriate phoneno";
+      newErrors.phone = "Enter appropriate phoneno"
     }
-    return newErrors;
+    return newErrors
   }
  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
+    e.preventDefault()
+    const validationErrors = validateForm()
     if (Object.keys(validationErrors).length === 0) {
-      setSubmittedData(prev => [...prev, { ...formData, id: Date.now() }]);
-      setFormData({username: "", city: "", gender: "", phone: "", feedback: ""});
-      setErrors({});
-      alert("Form submitted successfully! Check the Table page.");
-      console.log("Form Data:", formData);
+      setSubmittedData(prev => [...prev, { ...formData, id: Date.now() }])
+      setFormData({username: "", city: "", gender: "", phone: "", feedback: ""})
+      setErrors({})
+      alert("Form submitted successfully! Check the Table page.")
+      console.log("Form Data:", formData)
     } else {
-      setErrors(validationErrors);
+      setErrors(validationErrors)
     }
   }
 
@@ -63,7 +63,7 @@ const Form = () => {
     "Krishnagiri", "Dharmapuri", "Ariyalur", "Perambalur",
     "Pudukkottai", "Nagapattinam", "Tiruvannamalai",
     "Tenkasi", "Kallakurichi", "Nilgiris"
-  ];
+  ]
 
   return (
     <div className="form-page-container">
@@ -150,7 +150,7 @@ const Form = () => {
         </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form
