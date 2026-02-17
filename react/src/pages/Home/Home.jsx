@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import './Home.css';
+import React, { useEffect, useState } from 'react'
+import './Home.css'
 
 const Home = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
         y: (e.clientY / window.innerHeight) * 100
-      });
-    };
+      })
+    }
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   return (
     <div className="home-container">
@@ -72,7 +72,7 @@ const Home = () => {
       <div className="shooting-star"></div>
       <div className="shooting-star"></div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

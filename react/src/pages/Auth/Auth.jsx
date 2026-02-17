@@ -3,7 +3,7 @@ import { createContext } from "react";
 
 const TableContext = createContext({
   submittedData: [],
-  setSubmittedData: () => {}
+  setSubmittedData: () => {},
 });
 
 export default TableContext;
